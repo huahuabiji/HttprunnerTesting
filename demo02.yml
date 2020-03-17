@@ -1,6 +1,7 @@
 config:
     name: testcase description
     variables: {}
+    verify : False
 teststeps:
 -   name: /login
     request:
@@ -159,6 +160,8 @@ teststeps:
             x-requested-with: XMLHttpRequest
         method: POST
         url: https://mubu.com/api/list/create_doc
+    extract:
+        documentId: content.data.id # 提取创建之后最新的id，使用层级关系获取
     validate:
     -   eq:
         - status_code
@@ -169,7 +172,8 @@ teststeps:
     -   eq:
         - content.msg
         - null
--   name: /docEDL70N_Gka
+# -   name: /docEDL70N_Gka
+-   name: /doc${documentId}   # 把出错id替换成新的id参数值
     request:
         headers:
             sec-fetch-dest: document
@@ -179,7 +183,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
         method: GET
-        url: https://mubu.com/docEDL70N_Gka
+        url: https://mubu.com/doc${documentId} # 查找EDL70N_Gka全部替换成${documentId}
     validate:
     -   eq:
         - status_code
@@ -187,7 +191,7 @@ teststeps:
 -   name: /api/document/get
     request:
         data:
-            docId: EDL70N_Gka
+            docId: ${documentId}
         headers:
             content-type: application/x-www-form-urlencoded; charset=UTF-8
             sec-fetch-dest: empty
@@ -220,7 +224,7 @@ teststeps:
             x-requested-with: XMLHttpRequest
         method: POST
         params:
-            document_id: EDL70N_Gka
+            document_id: ${documentId}
         url: https://mubu.com/api/user/current_level
     validate:
     -   eq:
@@ -265,7 +269,7 @@ teststeps:
             x-requested-with: XMLHttpRequest
         method: GET
         params:
-            documentId: EDL70N_Gka
+            documentId: ${documentId}
             memberId: '1576017592053'
         url: https://mubu.com/api/middleware/members
     validate:
@@ -301,14 +305,14 @@ teststeps:
                     content:
                     -   name: nameChanged
                         title: d
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 0
             engineType: MUBU
             messageType: BROADCAST
             reqId: 2
             requestId: MESSAGE:6315962:1576017592053:2
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -344,14 +348,14 @@ teststeps:
                     content:
                     -   name: nameChanged
                         title: de
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 1
             engineType: MUBU
             messageType: BROADCAST
             reqId: 4
             requestId: MESSAGE:6315962:1576017592053:4
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -389,14 +393,14 @@ teststeps:
                         title: de'm
                     -   name: nameChanged
                         title: demo
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 2
             engineType: MUBU
             messageType: BROADCAST
             reqId: 6
             requestId: MESSAGE:6315962:1576017592053:6
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -432,14 +436,14 @@ teststeps:
                     content:
                     -   name: nameChanged
                         title: demo-
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 3
             engineType: MUBU
             messageType: BROADCAST
             reqId: 9
             requestId: MESSAGE:6315962:1576017592053:9
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -477,14 +481,14 @@ teststeps:
                         title: demo
                     -   name: nameChanged
                         title: demo0
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 4
             engineType: MUBU
             messageType: BROADCAST
             reqId: 12
             requestId: MESSAGE:6315962:1576017592053:12
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -520,14 +524,14 @@ teststeps:
                     content:
                     -   name: nameChanged
                         title: demo02
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 5
             engineType: MUBU
             messageType: BROADCAST
             reqId: 13
             requestId: MESSAGE:6315962:1576017592053:13
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -569,14 +573,14 @@ teststeps:
                                 text: ''
                             parentId: null
                         name: create
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 6
             engineType: MUBU
             messageType: BROADCAST
             reqId: 16
             requestId: MESSAGE:6315962:1576017592053:16
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -615,14 +619,14 @@ teststeps:
                         -   updated:
                                 id: 28b170cdb51ece0af
                                 text: 第
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 7
             engineType: MUBU
             messageType: BROADCAST
             reqId: 19
             requestId: MESSAGE:6315962:1576017592053:19
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -661,14 +665,14 @@ teststeps:
                         -   updated:
                                 id: 28b170cdb51ece0af
                                 text: 第一行
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 8
             engineType: MUBU
             messageType: BROADCAST
             reqId: 22
             requestId: MESSAGE:6315962:1576017592053:22
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -715,14 +719,14 @@ teststeps:
                                 end: 0
                                 start: 0
                         name: create
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 9
             engineType: MUBU
             messageType: BROADCAST
             reqId: 24
             requestId: MESSAGE:6315962:1576017592053:24
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -761,14 +765,14 @@ teststeps:
                         -   updated:
                                 id: 333170cdb530950da
                                 text: 第
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 10
             engineType: MUBU
             messageType: BROADCAST
             reqId: 27
             requestId: MESSAGE:6315962:1576017592053:27
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -807,14 +811,14 @@ teststeps:
                         -   updated:
                                 id: 333170cdb530950da
                                 text: 第二行
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 11
             engineType: MUBU
             messageType: BROADCAST
             reqId: 31
             requestId: MESSAGE:6315962:1576017592053:31
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -861,14 +865,14 @@ teststeps:
                                 end: 0
                                 start: 0
                         name: create
-                    documentId: EDL70N_Gka
+                    documentId: ${documentId}
                     type: CHANGE
                     version: 12
             engineType: MUBU
             messageType: BROADCAST
             reqId: 33
             requestId: MESSAGE:6315962:1576017592053:33
-            token: EDL70N_Gka
+            token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
     validate:
@@ -970,7 +974,7 @@ teststeps:
 -   name: /api/list/delete_doc
     request:
         data:
-            id: EDL70N_Gka
+            id: ${documentId}
         headers:
             content-type: application/x-www-form-urlencoded; charset=UTF-8
             sec-fetch-dest: empty
