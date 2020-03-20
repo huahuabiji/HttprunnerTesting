@@ -228,6 +228,8 @@ teststeps:
         params:
             document_id: ${documentId}
         url: https://mubu.com/api/user/current_level
+    extract:
+        userId: content.data.id   # 获取userid参数化
     validate:
     -   eq:
         - status_code
@@ -289,7 +291,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:2
+            request-id: MESSAGE:${userId}:${memberId}:2
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -313,7 +315,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 2
-            requestId: MESSAGE:6315962:${memberId}:2
+            requestId: MESSAGE:${userId}:${memberId}:2
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -332,7 +334,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:4
+            request-id: MESSAGE:${userId}:${memberId}:4
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -356,7 +358,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 4
-            requestId: MESSAGE:6315962:${memberId}:4
+            requestId: MESSAGE:${userId}:${memberId}:4
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -375,7 +377,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:6
+            request-id: MESSAGE:${userId}:${memberId}:6
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -401,7 +403,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 6
-            requestId: MESSAGE:6315962:${memberId}:6
+            requestId: MESSAGE:${userId}:${memberId}:6
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -420,7 +422,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:9
+            request-id: MESSAGE:${userId}:${memberId}:9
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -444,7 +446,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 9
-            requestId: MESSAGE:6315962:${memberId}:9
+            requestId: MESSAGE:${userId}:${memberId}:9
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -463,7 +465,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:12
+            request-id: MESSAGE:${userId}:${memberId}:12
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -489,7 +491,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 12
-            requestId: MESSAGE:6315962:${memberId}:12
+            requestId: MESSAGE:${userId}:${memberId}:12
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -508,7 +510,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:13
+            request-id: MESSAGE:${userId}:${memberId}:13
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -532,7 +534,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 13
-            requestId: MESSAGE:6315962:${memberId}:13
+            requestId: MESSAGE:${userId}:${memberId}:13
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -551,7 +553,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:16
+            request-id: MESSAGE:${userId}:${memberId}:16
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -581,7 +583,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 16
-            requestId: MESSAGE:6315962:${memberId}:16
+            requestId: MESSAGE:${userId}:${memberId}:16
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -600,7 +602,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:19
+            request-id: MESSAGE:${userId}:${memberId}:19
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -627,7 +629,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 19
-            requestId: MESSAGE:6315962:${memberId}:19
+            requestId: MESSAGE:${userId}:${memberId}:19
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -646,7 +648,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:22
+            request-id: MESSAGE:${userId}:${memberId}:22
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -673,7 +675,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 22
-            requestId: MESSAGE:6315962:${memberId}:22
+            requestId: MESSAGE:${userId}:${memberId}:22
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -692,7 +694,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:24
+            request-id: MESSAGE:${userId}:${memberId}:24
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -727,7 +729,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 24
-            requestId: MESSAGE:6315962:${memberId}:24
+            requestId: MESSAGE:${userId}:${memberId}:24
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -746,7 +748,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:27
+            request-id: MESSAGE:${userId}:${memberId}:27
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -773,7 +775,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 27
-            requestId: MESSAGE:6315962:${memberId}:27
+            requestId: MESSAGE:${userId}:${memberId}:27
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -792,7 +794,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:31
+            request-id: MESSAGE:${userId}:${memberId}:31
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -819,7 +821,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 31
-            requestId: MESSAGE:6315962:${memberId}:31
+            requestId: MESSAGE:${userId}:${memberId}:31
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
@@ -838,7 +840,7 @@ teststeps:
         headers:
             content-type: application/json; charset=UTF-8
             member-id: '${memberId}'
-            request-id: MESSAGE:6315962:${memberId}:33
+            request-id: MESSAGE:${userId}:${memberId}:33
             sec-fetch-dest: empty
             sec-fetch-mode: cors
             sec-fetch-site: same-origin
@@ -873,7 +875,7 @@ teststeps:
             engineType: MUBU
             messageType: BROADCAST
             reqId: 33
-            requestId: MESSAGE:6315962:${memberId}:33
+            requestId: MESSAGE:${userId}:${memberId}:33
             token: ${documentId}
         method: POST
         url: https://mubu.com/api/middleware/message
