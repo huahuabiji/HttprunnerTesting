@@ -80,6 +80,9 @@ teststeps:
     -   eq:
         - content.msg
         - Success
+    -   eq:   # 在抓包响应中内容提取出来做接口断言的校验
+        - content.data.name
+        - "无标题"
 -   name: /api/user/current_level
     request:
         data: ''
@@ -127,6 +130,9 @@ teststeps:
     -   eq:
         - content.msg
         - Success
+    -   len_eq:  # 校验响应内容长度关键字
+        - content.data.ticket
+        - 32
 -   name: /api/middleware/members
     request:
         headers:
