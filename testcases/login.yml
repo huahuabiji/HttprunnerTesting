@@ -2,6 +2,8 @@ config:
     name: testcase description
     variables: {}
     verify : False
+    base_url: ${get_base_url(prod)} # 根据调用debugtalk.py函数变量环境的自定义，获取到不同环境的url，默认是https://mubu.com
+
 teststeps:
 -   name: /login
     request:
@@ -13,7 +15,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
         method: GET
-        url: https://mubu.com/login
+        url: /login
     validate:
     -   eq:
         - status_code
@@ -28,7 +30,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
         method: GET
-        url: https://mubu.com/login/password
+        url: /login/password
     validate:
     -   eq:
         - status_code
@@ -48,7 +50,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/login/submit
+        url: /api/login/submit
     validate:
     -   eq:
         - status_code
@@ -69,7 +71,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
         method: GET
-        url: https://mubu.com/list
+        url: /list
     validate:
     -   eq:
         - status_code
@@ -85,7 +87,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/tip_new_update
+        url: /api/list/tip_new_update
     validate:
     -   eq:
         - status_code
@@ -112,7 +114,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/get
+        url: /api/list/get
     validate:
     -   eq:
         - status_code
@@ -134,7 +136,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/message/get_message_unread
+        url: /api/message/get_message_unread
     validate:
     -   eq:
         - status_code
