@@ -2,7 +2,7 @@ config:
     name: create doc
     variables: {}
     verify : False
-    export:
+    export:  # 输出参数值
       - documentId
       - memberId
       - userId
@@ -50,8 +50,10 @@ teststeps:
                 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
         method: GET
         url: https://mubu.com/doc${documentId} # 查找EDL70N_Gka全部替换成${documentId}
+    setup_hooks:  # 调用外部函数：调用debugtalk里边的函数打印参数化的值
+        - ${print_documentId($documentId)}
     extract:
-        memberId: "memberId: '(.*)'"   # 如果是页面的返回值可以使用正则表达式来匹配做参数化
+        memberId: "memberId: '(.*)'"   # 定义参数：如果是页面的返回值可以使用正则表达式来匹配做参数化
     validate:
     -   eq:
         - status_code

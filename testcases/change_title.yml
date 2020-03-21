@@ -1,12 +1,14 @@
 config:
     name: testcase description
-    variables: {}
+    variables:
+        - new_title: "new_title_${gettime_stamp()}"    # 引用debugtalk.yml里边的函数
+
     verify : False
 teststeps:
 
 -   name: create new doc
     testcase: testcases/create_doc.yml
-    extract:
+    extract: # 定义获取参数值
         - documentId
         - memberId
         - userId
@@ -253,7 +255,7 @@ teststeps:
                 message:
                     content:
                     -   name: nameChanged
-                        title: demo02345
+                        title: ${new_title}
                     documentId: ${documentId}
                     type: CHANGE
                     version: 5
