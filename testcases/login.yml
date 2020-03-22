@@ -1,6 +1,8 @@
 config:
     name: testcase description
-    variables: {}
+    variables:
+        password: ${ENV(PASSWORD)}  # 调用本地env的密码
+        phone: ${ENV(USERNAME)}     # 调用本地env的用户名
     verify : False
     base_url: ${get_base_url(prod)} # 根据调用debugtalk.py函数变量环境的自定义，获取到不同环境的url，默认是https://mubu.com
 
@@ -38,8 +40,8 @@ teststeps:
 -   name: /api/login/submit
     request:
         data:
-            password: fangmin0325
-            phone: '13080618079'
+            password: ${password}  # 使用公共变量获取值
+            phone: ${phone}        # 使用公共变量获取值
             remember: 'true'
         headers:
             content-type: application/x-www-form-urlencoded; charset=UTF-8
