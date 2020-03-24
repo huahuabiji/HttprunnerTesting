@@ -1,8 +1,8 @@
 config:
     name: testcase description
     variables:
-        password: ${ENV(PASSWORD)}  # 调用本地env的密码
-        phone: ${ENV(USERNAME)}     # 调用本地env的用户名
+        password: ${ENV(PASSWORD)}  # 调用本地env的密码，用例集里边的参数要和此处相同
+        phone: ${ENV(USERNAME)}     # 调用本地env的用户名，用例集里边的参数要和此处相同
     verify : False
     base_url: ${get_base_url(prod)} # 根据调用debugtalk.py函数变量环境的自定义，获取到不同环境的url，默认是https://mubu.com
 
@@ -37,26 +37,32 @@ teststeps:
     -   eq:
         - status_code
         - 200
--   name: /api/login/submit
-    request:
-        data:
-            password: ${password}  # 使用公共变量获取值
-            phone: ${phone}        # 使用公共变量获取值
-            remember: 'true'
-        headers:
-            content-type: application/x-www-form-urlencoded; charset=UTF-8
-            sec-fetch-dest: empty
-            sec-fetch-mode: cors
-            sec-fetch-site: same-origin
-            user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
-                (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
-            x-requested-with: XMLHttpRequest
-        method: POST
-        url: /api/login/submit
+#-   name: /api/login/submit
+#    request:
+#        data:
+#            password: ${password}  # 使用公共变量获取值
+#            phone: ${phone}        # 使用公共变量获取值
+#            remember: 'true'
+#        headers:
+#            content-type: application/x-www-form-urlencoded; charset=UTF-8
+#            sec-fetch-dest: empty
+#            sec-fetch-mode: cors
+#            sec-fetch-site: same-origin
+#            user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
+#                (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+#            x-requested-with: XMLHttpRequest
+#        method: POST
+#        url: /api/login/submit
+#    validate:
+#    -   eq:
+#        - status_code
+#        - 200
+-   name: api/login/submit
+    variables:
+        phone: ${phone}  # 还需要调用脚本全局的phone参数
+        password: ${password}  # 还需要调用脚本全局的password参数
+    api: api/login_api.yml  # 调用api文件下边的单接口的脚本
     validate:
-    -   eq:
-        - status_code
-        - 200
     -   eq:
         - content.code
         - 0

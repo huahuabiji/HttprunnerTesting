@@ -1,0 +1,25 @@
+
+
+name: submit login  # 命令自定义
+variables:
+    phone: ${ENV(USERNAME)} # 获取本地env用户名
+    password: ${ENV(PASSWORD)}  # 获取本地env密码
+request:
+    data:
+        password: ${password}  # 使用公共变量获取值
+        phone: ${phone}        # 使用公共变量获取值
+        remember: 'true'
+    headers:
+        content-type: application/x-www-form-urlencoded; charset=UTF-8
+        sec-fetch-dest: empty
+        sec-fetch-mode: cors
+        sec-fetch-site: same-origin
+        user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36
+                (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+        x-requested-with: XMLHttpRequest
+    method: POST
+    url: https://mubu.com/api/login/submit  # url全称填写
+validate:
+    -   eq:
+        - status_code
+        - 200
