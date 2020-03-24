@@ -1,0 +1,9 @@
+config:
+    name: "login with different accounts"
+
+testcases:
+-
+    name: login system # 可重新命名
+    testcase: testcases/login.yml  # 调用用例里边的登录脚本
+    parameters:
+        phone-password: ${P(data/accounts.csv)} # 把phone和password使用csv文件，使登录的用户名和密码可以实现不同数据的参数化
